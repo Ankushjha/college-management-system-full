@@ -19,9 +19,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function Login() {
+  const navigate = useNavigate();
   return (
     <div className="flex h-screen justify-center items-center">
       <Card className="min-w-96">
@@ -69,7 +70,7 @@ export function Login() {
         </CardContent>
         <CardFooter className="flex flex-col">
           {/* <Button variant="outline">Cancel</Button> */}
-          <Button>Login</Button>
+          <Button onClick={() => navigate("/admin")}>Login</Button>
 
           <div className="flex flex-col justify-between space-y-1.5 mt-2">
             <Label>Forgot password? </Label>

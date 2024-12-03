@@ -68,14 +68,19 @@ export default function Register() {
                 </Select>
               </div>
 
-              <div className="flex items-center space-x-1.5">
+              <div className="flex items-top space-x-1.5">
                 <Checkbox id="terms" />
-                <label
-                  htmlFor="terms"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Accept terms and conditions
-                </label>
+                <div className="grid gap-1.5 leading-none">
+                  <label
+                    htmlFor="terms"
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Accept terms and conditions
+                  </label>
+                  <p className="text-sm text-muted-foreground">
+                    You agree to our Terms of Service and Privacy Policy.
+                  </p>
+                </div>
               </div>
             </div>
           </form>
