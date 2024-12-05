@@ -13,7 +13,7 @@ const CollapsibleSidebar = ({ isOpen, handleMenu }) => {
   const menuItems = [
     { icon: Home, label: "Dashboard", href: "dashboard" },
     { icon: Users, label: "Users", href: "user" },
-    { icon: MessageSquare, label: "Messages", href: "#" },
+    { icon: MessageSquare, label: "Messages", href: "message" },
     { icon: Settings, label: "Settings", href: "#" },
     { icon: HelpCircle, label: "Help", href: "#" },
   ];

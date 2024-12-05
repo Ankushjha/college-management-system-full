@@ -1,29 +1,31 @@
 import CollapsibleSidebar from "@/components/Admin/CollapsibleSidebar";
 import Navbar from "@/components/Admin/Navbar";
-import React, { createContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import DataTable from "@/components/Admin/DataTable";
 import { Outlet } from "react-router-dom";
-import Dashboard from "@/components/Admin/Dashboard";
+import { Loader } from "lucide-react";
 
 export default function Admin() {
   const [isOpen, setIsOpen] = useState(true);
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const response = await axios.get("https://dummyjson.com/users");
         setUser(response.data);
+        setLoading(false);
       } catch (error) {
         console.log("Error: ", error);
+        setLoading(false);
       }
     };
 
     fetchUser();
   }, []);
 
-  const users = user?.users[0] || [];
+  const users = user?.users || [];
   // console.log(users);
 
   const handleMenu = () => {
@@ -42,12 +44,18 @@ export default function Admin() {
         }`}
       >
         <Navbar
-          userImage={users?.image}
-          userName={users?.firstName}
-          role={users?.role}
+          userImage={users[0]?.image}
+          userName={users[0]?.firstName}
+          role={users[0]?.role}
         />
 
-        <Outlet context={{ users }} />
+        {loading ? (
+          <div className="h-screen flex items-center justify-center">
+            <Loader />
+          </div>
+        ) : (
+          <Outlet context={{ users }} />
+        )}
 
         {/* <Dashboard userCardData={userCardData} /> */}
 
